@@ -50,5 +50,39 @@ class Date {
 		}
 		return($days[$day_number]);
 	}
+
+	function get_date_components($date) {
+		$date_distance = 'past';
+		if ($this->is_today($date)) {
+			$date_distance = 'today';
+		}
+		elseif ($this->is_yesterday($date)) {
+			$date_distance = 'yesterday';
+		}
+
+		$date_dow = $this->day(date("N", strtotime($date)));
+		$date_day = date("d", strtotime($date));
+		$date_moy = $this->month(date("n", strtotime($date)));
+
+		$ordinal = $this->ordinal(date("j", strtotime($date))); // for English dates
+		return array(
+			"date_dow" => $date_dow,
+			"date_day" => $date_day,
+			"date_moy" => $date_moy,
+			"date_distance" => $date_distance,
+			"ordinal" => $ordinal,
+		);
+	}
+
+	// 
+	// English Ordinal suffixes
+	// 
+	function ordinal($number) {
+		$ends = array('th','st','nd','rd','th','th','th','th','th','th');
+		if ((($number % 100) >= 11) && (($number%100) <= 13))
+			return $number. 'th';
+		else
+			return $number. $ends[$number % 10];
+	}
 }
 ?>
