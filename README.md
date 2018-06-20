@@ -53,4 +53,4 @@ Receives a PHP Date `date("Y-m-d H:i:s")`. Returns an array containing:
 * **date_day**: Day number, like the 20 in "April 20th"
 * **date_moy**: Month name. Dame as `month()`
 * **date_distance**: (today|yesterday|past)
-* **ordinal**: Date number with an ordinal attached to it, for english dates. Eg: "20th"
+* **ordinal**: Date number with an ordinal attached to it, for english dates. Eg: "20th", "3rd", "1st"
